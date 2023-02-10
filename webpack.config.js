@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-    new ESLintPlugin(),
+
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Shape Tracker',
@@ -24,6 +24,8 @@ module.exports = {
       inject: 'body'
     })
   ],
+  
+  
   module: {
     rules: [
       {
@@ -39,6 +41,19 @@ module.exports = {
           'html-loader'
         ]
       },
+      {
+        test: /\.(gif|png|avif|jpe?g)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/'
+            }
+          }
+        ]
+      }
     ]
   }
 };
+
